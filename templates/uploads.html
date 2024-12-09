@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploads | Project Challenge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="uploads-container">
+        <h1>Uploads yang telah dilakukan:</h1>
+        <div class="uploads-list">
+            {% if uploads %}
+                <ul class="upload-items">
+                    {% for upload in uploads %}
+                        <li class="upload-item">
+                            <strong>{{ upload['challenge_title'] }}</strong>
+                            <p>{{ upload['response'] }}</p>
+                            <img src="{{ upload['image_url'] }}" alt="Uploaded Image" width="200">
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Belum ada upload yang tersedia.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+

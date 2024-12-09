@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unggahan {{ username }} | Project Challenge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="uploads-container">
+        <h1>Unggahan {{ username }}</h1>
+
+        {% if uploads %}
+            <ul>
+                {% for upload in uploads %}
+                    <li class="upload-item">
+                        <h3>{{ upload.challenge_title }}</h3>
+                        <p>{{ upload.response }}</p>
+                        <img src="{{ upload.image_url }}" alt="Gambar Unggahan" width="300">
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Tidak ada unggahan yang ditemukan untuk pengguna ini.</p>
+        {% endif %}
+
+        <a href="{{ url_for('challenge_uploads') }}">Kembali ke semua unggahan</a>
+    </div>
+</body>
+</html>
